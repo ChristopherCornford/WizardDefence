@@ -367,9 +367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3215e21a405014cb078a84bfafebf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combinedOrbAttributes: {fileID: 0}
   selectedSpells: []
   spellCombination: {fileID: 0}
-  currentSpell: {fileID: 0}
   combinedSpellOrb: {fileID: 0}
   combinedColor: {r: 0, g: 0, b: 0, a: 0}
   combinedDamage: 0

@@ -262,6 +262,11 @@ Prefab:
       objectReference: {fileID: 1771564655}
     - target: {fileID: 114746657103255046, guid: 5e9e851c0e142814dac026a256ba2ac0,
         type: 2}
+      propertyPath: combinedOrbAttributes
+      value: 
+      objectReference: {fileID: 1088925389}
+    - target: {fileID: 114746657103255046, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
       propertyPath: combinedSpellOrb
       value: 
       objectReference: {fileID: 1088925387}
@@ -539,6 +544,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4162287347990062, guid: aa459777ca0d0d44c8c0abaacda7bcfa,
     type: 2}
   m_PrefabInternal: {fileID: 144971405}
+--- !u!114 &1088925389 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114019960349565378, guid: aa459777ca0d0d44c8c0abaacda7bcfa,
+    type: 2}
+  m_PrefabInternal: {fileID: 144971405}
+  m_Script: {fileID: 11500000, guid: 16adfc38c72d31944871f1a16333a113, type: 3}
 --- !u!1 &1247009234
 GameObject:
   m_ObjectHideFlags: 0
