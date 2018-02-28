@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fire
   - Spell
+  - XSpell
   layers:
   - Default
   - TransparentFX

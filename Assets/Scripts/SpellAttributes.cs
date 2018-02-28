@@ -22,5 +22,7 @@ public class SpellAttributes : MonoBehaviour {
 		orbColor = spell.color;
 
 		GetComponent<Renderer> ().material.color = orbColor;
+		GetComponent<Renderer> ().material.SetColor ("_EmissionColor", orbColor);
+		GetComponent<Light> ().color = orbColor;
 	}
 }

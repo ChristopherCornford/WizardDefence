@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wind
   description: Even a mighty flame can be extinguished by a single breath..
-  color: {r: 0, g: 1, b: 0, a: 0}
-  damage: 5
+  color: {r: 0, g: 1, b: 0, a: 0.23529412}
+  damage: 30
