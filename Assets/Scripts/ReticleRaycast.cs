@@ -53,7 +53,10 @@ public class ReticleRaycast : MonoBehaviour {
 		}
 	}
 	private void CastSpell(Spell spell){
+		RaycastHit hit = new RaycastHit();
+		if (Physics.Raycast(transform.position, transform.forward, out hit, 100f)){
 		Debug.Log ("You've cast: " + spell.name);
 		spellMaker.CombineSpells ();
+		}
 	}
 }
