@@ -1,4 +1,4 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +18,8 @@ public class ReticleRaycast : MonoBehaviour {
 	public Text descriptionText;
 
 	public SpellMaker spellMaker;
+	public GameObject explosion;
+	public GameObject[] effects;
 
 	void FixedUpdate() 
 	{	
@@ -56,6 +58,15 @@ public class ReticleRaycast : MonoBehaviour {
 		RaycastHit hit = new RaycastHit();
 		if (Physics.Raycast(transform.position, transform.forward, out hit, 100f)){
 		Debug.Log ("You've cast: " + spell.name);
+			switch (spellMaker.currentSpell.name) {
+			case "Fire":
+				Instantiate (explosion, transform.position, Quaternion.identity);
+				break;
+			case "Ice":
+				break;
+			case "Wind":
+				break;
+			}
 		spellMaker.CombineSpells ();
 		}
 	}

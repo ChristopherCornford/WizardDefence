@@ -357,6 +357,7 @@ MonoBehaviour:
   canClick: 0
   descriptionText: {fileID: 0}
   spellMaker: {fileID: 114746657103255046}
+  explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
 --- !u!114 &114283318389866948
 MonoBehaviour:
   m_ObjectHideFlags: 1
