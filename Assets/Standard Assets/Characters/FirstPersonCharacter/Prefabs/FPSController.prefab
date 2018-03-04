@@ -47,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.375, z: -4.77}
+  m_LocalPosition: {x: 0, y: 9.271994, z: -4.14184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -61,7 +61,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0.136}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -354,10 +354,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastReach: 5
+  spellRange: 200
   canClick: 0
   descriptionText: {fileID: 0}
   spellMaker: {fileID: 114746657103255046}
-  explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  explosion: {fileID: 1150576756370884, guid: 6e17645b9d04fe3409e5e99f74ef8c25, type: 2}
+  effects: []
 --- !u!114 &114283318389866948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,6 +390,7 @@ MonoBehaviour:
   combinedColor: {r: 0, g: 0, b: 0, a: 0}
   combinedDamage: 0
   currentSpell: {fileID: 0}
+  currentSpellText: {fileID: 0}
   Fire: {fileID: 11400000, guid: ffc7cd799cc0ab24bb036847a556e567, type: 2}
   Ice: {fileID: 11400000, guid: 041bd63dde4b146409cbbf72e08ffa76, type: 2}
   Wind: {fileID: 11400000, guid: fb8a5c1c189007545b2a44cfa8bbf05d, type: 2}

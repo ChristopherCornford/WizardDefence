@@ -8,6 +8,8 @@ TagManager:
   - Spell
   - XSpell
   - SpellEffect
+  - Enemy
+  - Death
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,8 @@ public class ReticleRaycast : MonoBehaviour {
 	[TooltipAttribute("Use this variable to change how far away from them a player can reach!")]
 	public float raycastReach = 3;
 
+	public float spellRange = 15;
+
 	/* Private */
 	[SerializeField] private bool canClick;
 	private Ray theRay;
@@ -56,7 +58,7 @@ public class ReticleRaycast : MonoBehaviour {
 	}
 	private void CastSpell(Spell spell){
 		RaycastHit hit = new RaycastHit();
-		if (Physics.Raycast(transform.position, transform.forward, out hit, 100f)){
+		if (Physics.Raycast(transform.position, transform.forward, out hit, spellRange)){
 		Debug.Log ("You've cast: " + spell.name);
 			switch (spellMaker.currentSpell.name) {
 			case "Fire":
