@@ -23,8 +23,15 @@ public class ReticleRaycast : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject[] effects;
 
+	public float triggerInputValue;
+	public bool canCast = false;
+
 	void FixedUpdate() 
 	{	
+		triggerInputValue = Input.GetAxisRaw ("Fire1");
+		if (triggerInputValue > -0.2) {
+			canCast = true;
+		} 
 		// Raycast to see if Player is looking at important object
 		RaycastHit hit = new RaycastHit();
 		if (Physics.Raycast(transform.position, transform.forward, out hit, raycastReach)){
@@ -44,7 +51,8 @@ public class ReticleRaycast : MonoBehaviour {
 		if (canClick == true && Input.GetButtonDown("Fire1")){
 			Click(hit.collider.gameObject.tag);
 		}
-			if (canClick == true && Input.GetButtonDown ("Fire2")) {
+			if (canClick == true && canCast == true && triggerInputValue == -1) {
+				canCast = false;
 				CastSpell (spellMaker.currentSpell);
 			}
 	}

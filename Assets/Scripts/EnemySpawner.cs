@@ -16,11 +16,15 @@ public class EnemySpawner : MonoBehaviour {
 
 	[Range(1, 10)]
 	public int enemyLimit;
+	public int numberOfEnemies;
 
 	public void Start () {
 		Spawn ();
 	}
+	/*public void LateUpdate() {
+		StartCoroutine ("CheckForEnemies");
 
+	}*/
 	public void Spawn ( ) {
 		if (activeEnemies.Count <= enemyLimit) {
 			currentLane = lanes [Random.Range (0, lanes.Length)];
@@ -33,4 +37,11 @@ public class EnemySpawner : MonoBehaviour {
 			}
 		}
 	}
+	/*public IEnumerator CheckForEnemies () {
+		numberOfEnemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;
+		if (numberOfEnemies < (enemyLimit + 1)) {
+			Invoke ("Spawn", spawnTimer);
+		}
+		yield return null;
+	}*/
 }
