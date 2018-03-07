@@ -26,6 +26,24 @@ public class ReticleRaycast : MonoBehaviour {
 	public float triggerInputValue;
 	public bool canCast = false;
 
+	[Range(0.1f, 5.0f)]
+	public float timeToCombine = 5f;
+	public float combinationTimer;
+	public bool canCombine = true;
+	[Range(0f, 1f)]
+	public float singleSpellCooldown;
+	[Range(1f, 5f)]
+	public float combinedSpellCooldown;
+
+	void Update() {
+		if (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind")) {
+			SpellSelection ();
+			if (canCombine == true) {
+				StartCoroutine ("CombinationTimer");
+			}
+		}
+	}
+
 	void FixedUpdate() 
 	{	
 		triggerInputValue = Input.GetAxisRaw ("Fire1");
@@ -56,18 +74,43 @@ public class ReticleRaycast : MonoBehaviour {
 				CastSpell (spellMaker.currentSpell);
 			}
 	}
-		SpellSelection ();
+
+		/*
+		 player selects first spell
+		 timer start at time to combine counts down to zero
+		 once it hits zero, it resets
+		 cancombine is true while the timer is not at zero
+		 * */
 }
+	public IEnumerator CombinationTimer () {
+		combinationTimer = timeToCombine;
+		while (combinationTimer > 0) {
+			combinationTimer -= Time.deltaTime;
+		}
+		if (combinationTimer <= 0) { 
+			canCombine = false;
+			combinationTimer = 0f;
+		} else {
+			canCombine = true;
+		}
+		yield return null;
+	}
 	private void SpellSelection () {
 		if (Input.GetButtonDown("Fire")) {
 			spellMaker.currentSpell = spellMaker.Fire;
-			spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+			if (canCombine == true) {
+				spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+			}
 		} else if (Input.GetButtonDown("Ice")) {
 			spellMaker.currentSpell = spellMaker.Ice;
-			spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+			if (canCombine == true) {
+				spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+			}
 		} else if (Input.GetButtonDown("Wind")) {
 			spellMaker.currentSpell = spellMaker.Wind;
-			spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+			if (canCombine == true) {
+				spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+			}
 		}
 	}
 	private void Click(string objTag) {
