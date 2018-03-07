@@ -20,7 +20,7 @@ public class ReticleRaycast : MonoBehaviour {
 	public Text descriptionText;
 
 	public SpellMaker spellMaker;
-	public GameObject explosion;
+	public GameObject fireball;
 	public GameObject[] effects;
 
 	public float triggerInputValue;
@@ -56,7 +56,20 @@ public class ReticleRaycast : MonoBehaviour {
 				CastSpell (spellMaker.currentSpell);
 			}
 	}
+		SpellSelection ();
 }
+	private void SpellSelection () {
+		if (Input.GetButtonDown("Fire")) {
+			spellMaker.currentSpell = spellMaker.Fire;
+			spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+		} else if (Input.GetButtonDown("Ice")) {
+			spellMaker.currentSpell = spellMaker.Ice;
+			spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+		} else if (Input.GetButtonDown("Wind")) {
+			spellMaker.currentSpell = spellMaker.Wind;
+			spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+		}
+	}
 	private void Click(string objTag) {
 		if (objTag == "Spell") {
 			Debug.Log (currentObj.name);
@@ -70,7 +83,7 @@ public class ReticleRaycast : MonoBehaviour {
 		Debug.Log ("You've cast: " + spell.name);
 			switch (spellMaker.currentSpell.name) {
 			case "Fire":
-				Instantiate (explosion, transform.position, Quaternion.identity);
+				Instantiate (fireball, transform.position, Quaternion.identity);
 				break;
 			case "Ice":
 				break;
