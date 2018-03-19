@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
 
 	public EnemySpawner enemySpawner;
+	public ScoreManager scoreManager;
 
 	public float enemySpeed;
 
@@ -12,6 +13,7 @@ public class EnemyController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		enemySpawner = GameObject.Find ("/Lanes/SpawnPoints").GetComponent<EnemySpawner> ();
+		scoreManager = GameObject.Find ("/ScoreManager").GetComponent<ScoreManager> ();
 	}
 	
 	// Update is called once per frame
@@ -28,6 +30,8 @@ public class EnemyController : MonoBehaviour {
 			enemySpawner.activeEnemies.Remove (gameObject);
 			enemySpawner.Invoke ("Spawn", enemySpawner.spawnTimer);
 			Destroy (gameObject);
+			scoreManager.Score++;
+	
 		}
 	}
 }
