@@ -35,12 +35,16 @@ public class ReticleRaycast : MonoBehaviour {
 	[Range(1f, 5f)]
 	public float combinedSpellCooldown;
 
+	public int spellsSelected;
+
 	void Start () {
 		canCombine = true;
 		combinationTimer = timeToCombine;
 	}
 	void FixedUpdate() 
 	{	
+		spellsSelected = spellMaker.selectedSpells.Count;
+
 		triggerInputValue = Input.GetAxisRaw ("Fire1");
 		if (triggerInputValue > -0.2) {
 			canCast = true;
@@ -59,7 +63,7 @@ public class ReticleRaycast : MonoBehaviour {
 			canClick = false;
 				descriptionText.text = " ";
 		}
-			if (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind")) {
+			if (spellsSelected == 0 && (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind"))) {
 				SpellSelection ();
 				StartCombinationTimer ();
 			}
@@ -75,13 +79,15 @@ public class ReticleRaycast : MonoBehaviour {
 	public void StartCombinationTimer () {
 		Debug.Log ("Timer Starts Now");
 		canCombine = true;
-		if (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind")) {
+		if (spellsSelected == 1 && (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind"))) {
+			SpellSelection ();
 			EndCombinationTimer ();
 		} else {
 			Invoke ("EndCombinationTimer", timeToCombine);
 		}
 	}
 	public void EndCombinationTimer () {
+		spellMaker.selectedSpells.Clear ();
 		canCombine = false;
 	}
 	private void SpellSelection () {
