@@ -35,15 +35,10 @@ public class ReticleRaycast : MonoBehaviour {
 	[Range(1f, 5f)]
 	public float combinedSpellCooldown;
 
-	void Update() {
-		if (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind")) {
-			SpellSelection ();
-			if (canCombine == true) {
-				StartCoroutine ("CombinationTimer");
-			}
-		}
+	void Start () {
+		canCombine = true;
+		combinationTimer = timeToCombine;
 	}
-
 	void FixedUpdate() 
 	{	
 		triggerInputValue = Input.GetAxisRaw ("Fire1");
@@ -64,36 +59,30 @@ public class ReticleRaycast : MonoBehaviour {
 			canClick = false;
 				descriptionText.text = " ";
 		}
-
+			if (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind")) {
+				SpellSelection ();
+				StartCombinationTimer ();
+			}
 		// Actual clicking on object
 		if (canClick == true && Input.GetButtonDown("Fire1")){
 			Click(hit.collider.gameObject.tag);
 		}
 			if (canClick == true && canCast == true && triggerInputValue == -1) {
-				canCast = false;
 				CastSpell (spellMaker.currentSpell);
 			}
 	}
-
-		/*
-		 player selects first spell
-		 timer start at time to combine counts down to zero
-		 once it hits zero, it resets
-		 cancombine is true while the timer is not at zero
-		 * */
 }
-	public IEnumerator CombinationTimer () {
-		combinationTimer = timeToCombine;
-		while (combinationTimer > 0) {
-			combinationTimer -= Time.deltaTime;
-		}
-		if (combinationTimer <= 0) { 
-			canCombine = false;
-			combinationTimer = 0f;
+	public void StartCombinationTimer () {
+		Debug.Log ("Timer Starts Now");
+		canCombine = true;
+		if (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind")) {
+			EndCombinationTimer ();
 		} else {
-			canCombine = true;
+			Invoke ("EndCombinationTimer", timeToCombine);
 		}
-		yield return null;
+	}
+	public void EndCombinationTimer () {
+		canCombine = false;
 	}
 	private void SpellSelection () {
 		if (Input.GetButtonDown("Fire")) {

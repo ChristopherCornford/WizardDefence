@@ -442,6 +442,11 @@ Prefab:
       propertyPath: currentSpellText
       value: 
       objectReference: {fileID: 724520342}
+    - target: {fileID: 114241164256640458, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: timeToCombine
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
