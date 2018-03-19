@@ -145,8 +145,9 @@ MonoBehaviour:
   currentLane: {fileID: 0}
   lastLane: {fileID: 0}
   enemy: {fileID: 0}
-  enemyPrefab: {fileID: 1974190157367540, guid: 00746f3e05a2f134581ec9e934d7c5d7,
+  enemyPrefab: {fileID: 1404335646103258, guid: 2eeae34eff14def49b57634274af0218,
     type: 2}
   activeEnemies: []
   spawnTimer: 2.5
   enemyLimit: 10
+  numberOfEnemies: 0
