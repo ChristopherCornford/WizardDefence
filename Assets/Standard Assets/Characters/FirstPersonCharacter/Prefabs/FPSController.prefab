@@ -358,15 +358,16 @@ MonoBehaviour:
   canClick: 0
   descriptionText: {fileID: 0}
   spellMaker: {fileID: 114746657103255046}
-  fireball: {fileID: 1150576756370884, guid: 6e17645b9d04fe3409e5e99f74ef8c25, type: 2}
+  fireball: {fileID: 174764, guid: 94cf4257d40ab34469e91019e7ec7c65, type: 2}
   effects: []
   triggerInputValue: 0
   canCast: 0
-  timeToCombine: 5
+  timeToCombine: 2
   combinationTimer: 0
   canCombine: 1
   singleSpellCooldown: 0
   combinedSpellCooldown: 0
+  spellsSelected: 0
 --- !u!114 &114283318389866948
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -121,7 +121,7 @@ public class ReticleRaycast : MonoBehaviour {
 		Debug.Log ("You've cast: " + spell.name);
 			switch (spellMaker.currentSpell.name) {
 			case "Fire":
-				Instantiate (fireball, transform.position, Quaternion.identity);
+				Instantiate (fireball, hit.point, Quaternion.identity);
 				break;
 			case "Ice":
 				break;
