@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 19827026}
   - component: {fileID: 19990502}
   - component: {fileID: 114681309435181434}
+  - component: {fileID: 76309683327586416}
   m_Layer: 0
   m_Name: wind
   m_TagString: SpellEffect
@@ -2579,7 +2580,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -2723,7 +2724,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 1
   TriggerModule:
@@ -13406,6 +13407,19 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 135484}
   m_IsPrefabParent: 1
+--- !u!76 &76309683327586416
+WorldParticleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135484}
+  m_BounceFactor: 0.5
+  m_CollisionEnergyLoss: 0
+  m_CollidesWith:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_SendCollisionMessage: 0
+  m_MinKillVelocity: 0
 --- !u!114 &114681309435181434
 MonoBehaviour:
   m_ObjectHideFlags: 1

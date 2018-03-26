@@ -33,9 +33,9 @@ public class EnemySpawner : MonoBehaviour {
 				enemy = Instantiate (enemyPrefab, currentLane.transform.position, Quaternion.identity) as GameObject;
 				activeEnemies.Add (enemy);
 				lastLane = currentLane;
-				Invoke ("Spawn", spawnTimer);
 			}
 		}
+		Invoke ("Spawn", spawnTimer);
 	}
 	/*public IEnumerator CheckForEnemies () {
 		numberOfEnemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;

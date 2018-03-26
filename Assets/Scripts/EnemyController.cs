@@ -35,9 +35,7 @@ public class EnemyController : MonoBehaviour {
 	}
 	public void Score () {
 		enemySpawner.activeEnemies.Remove (gameObject);
-		enemySpawner.Invoke ("Spawn", enemySpawner.spawnTimer);
 		Destroy (gameObject);
 		scoreManager.Score++;
-		Debug.Log ("A Spell Killed Me!!");
 	}
 }

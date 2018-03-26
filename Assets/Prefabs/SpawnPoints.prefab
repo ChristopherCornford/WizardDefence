@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4360351788519936}
   m_Layer: 0
   m_Name: LeftSpawn
-  m_TagString: Untagged
+  m_TagString: Lane
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4143405293411854}
   m_Layer: 0
   m_Name: RightSpawn
-  m_TagString: Untagged
+  m_TagString: Lane
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4840038077279016}
   m_Layer: 0
   m_Name: MiddleSpawn
-  m_TagString: Untagged
+  m_TagString: Lane
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   currentLane: {fileID: 0}
   lastLane: {fileID: 0}
   enemy: {fileID: 0}
-  enemyPrefab: {fileID: 1503584379898156, guid: 326baf151c903404f9161fa4bbd19058,
+  enemyPrefab: {fileID: 1459314005511048, guid: 12540348697cf9446be265a736dbd58b,
     type: 2}
   activeEnemies: []
   spawnTimer: 2.5

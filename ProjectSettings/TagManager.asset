@@ -10,6 +10,7 @@ TagManager:
   - SpellEffect
   - Enemy
   - Death
+  - Lane
   layers:
   - Default
   - TransparentFX

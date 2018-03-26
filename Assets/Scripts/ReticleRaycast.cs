@@ -16,6 +16,7 @@ public class ReticleRaycast : MonoBehaviour {
 	[SerializeField] private bool canClick;
 	private Ray theRay;
 	private GameObject currentObj;
+	private GameObject laneObj;
 
 	public Text descriptionText;
 
@@ -47,6 +48,7 @@ public class ReticleRaycast : MonoBehaviour {
 	}
 	void FixedUpdate() 
 	{	
+		canClick = true;
 		spellsSelected = spellMaker.selectedSpells.Count;
 
 		triggerInputValue = Input.GetAxisRaw ("Fire1");
@@ -56,6 +58,10 @@ public class ReticleRaycast : MonoBehaviour {
 		// Raycast to see if Player is looking at important object
 		RaycastHit hit = new RaycastHit();
 
+		if (spellsSelected == 0 && (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind"))) {
+			SpellSelection ();
+			//StartCombinationTimer ();
+		}
 		if (Physics.Raycast(transform.position, transform.forward, out hit, raycastReach)){
 			currentObj = hit.collider.gameObject;
 			if (hit.collider.gameObject.tag == "Spell" || spellMaker.selectedSpells.Count != 0 || spellMaker.spellCombination != null) {
@@ -63,18 +69,11 @@ public class ReticleRaycast : MonoBehaviour {
 				if (hit.collider.gameObject.tag == "Spell") {
 					descriptionText.text = currentObj.GetComponent<SpellAttributes> ().spell.description;
 				}
-			} else if (hit.collider.transform.tag == "Lane") {
-				canClick = true;
-				hit.collider.GetComponent<Renderer> ().material.color = Color.green;
 			}
 		else {
 			canClick = false;
 				descriptionText.text = " ";
 		}
-			if (spellsSelected == 0 && (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind"))) {
-				SpellSelection ();
-				StartCombinationTimer ();
-			}
 		// Actual clicking on object
 		if (canClick == true && Input.GetButtonDown("Fire1")){
 			Click(hit.collider.gameObject.tag);
@@ -84,8 +83,18 @@ public class ReticleRaycast : MonoBehaviour {
 				canCast = false;
 			}
 	}
+		RaycastHit lane = new RaycastHit ();
+		if (Physics.Raycast (transform.position, transform.forward, out lane, raycastReach)) {
+			laneObj = lane.collider.gameObject;
+			if (laneObj.transform.tag == "Lane") {
+				canClick = true;
+				laneObj.GetComponent<Collider> ().GetComponent<Renderer> ().material.color = Color.cyan;
+			} else {
+				Debug.Log ("Not Looking At A Lane");
+			}
+		}
 }
-	public void StartCombinationTimer () {
+	/*public void StartCombinationTimer () {
 		Debug.Log ("Timer Starts Now");
 		canCombine = true;
 		if (spellsSelected == 1 && (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind"))) {
@@ -98,7 +107,7 @@ public class ReticleRaycast : MonoBehaviour {
 	public void EndCombinationTimer () {
 		spellMaker.selectedSpells.Clear ();
 		canCombine = false;
-	}
+	}*/
 	private void SpellSelection () {
 		if (Input.GetButtonDown("Fire")) {
 			spellMaker.currentSpell = spellMaker.Fire;
@@ -139,9 +148,12 @@ public class ReticleRaycast : MonoBehaviour {
 				Instantiate (wind, hit.point, Quaternion.identity);
 				break;
 			}
-			if (spellMaker.selectedSpells.Count != 1) {
-				spellMaker.CombineSpells ();
-			}
+			/*if (spellMaker.selectedSpells.Count != 1) {
+				spellMaker.selectedSpells.Clear ();
+
+			}*/
+			spellMaker.selectedSpells.Clear ();
+			spellMaker.CombineSpells ();
 		}
 	}
 }
