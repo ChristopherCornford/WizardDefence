@@ -8,9 +8,9 @@ public class ReticleRaycast : MonoBehaviour {
 	/*Public*/
 
 	[TooltipAttribute("Use this variable to change how far away from them a player can reach!")]
-	public float raycastReach = 3;
+	public float raycastReach = 100f;
 
-	public float spellRange = 15;
+	public float spellRange = 100f;
 
 	/* Private */
 	[SerializeField] private bool canClick;
@@ -20,7 +20,6 @@ public class ReticleRaycast : MonoBehaviour {
 	public Text descriptionText;
 
 	public SpellMaker spellMaker;
-	public GameObject fireball;
 	public GameObject[] effects;
 
 	public float triggerInputValue;
@@ -37,6 +36,11 @@ public class ReticleRaycast : MonoBehaviour {
 
 	public int spellsSelected;
 
+	[Header("Particle Effects")]
+	public GameObject fire;
+	public GameObject ice;
+	public GameObject wind;
+
 	void Start () {
 		canCombine = true;
 		combinationTimer = timeToCombine;
@@ -51,13 +55,17 @@ public class ReticleRaycast : MonoBehaviour {
 		} 
 		// Raycast to see if Player is looking at important object
 		RaycastHit hit = new RaycastHit();
+
 		if (Physics.Raycast(transform.position, transform.forward, out hit, raycastReach)){
 			currentObj = hit.collider.gameObject;
-			if (hit.collider.gameObject.tag == "Spell" || spellMaker.selectedSpells.Count != 0 ||spellMaker.spellCombination != null){
+			if (hit.collider.gameObject.tag == "Spell" || spellMaker.selectedSpells.Count != 0 || spellMaker.spellCombination != null) {
 				canClick = true;
-				if (hit.collider.gameObject.tag == "Spell"){
-				descriptionText.text = currentObj.GetComponent<SpellAttributes> ().spell.description;
+				if (hit.collider.gameObject.tag == "Spell") {
+					descriptionText.text = currentObj.GetComponent<SpellAttributes> ().spell.description;
 				}
+			} else if (hit.collider.transform.tag == "Lane") {
+				canClick = true;
+				hit.collider.GetComponent<Renderer> ().material.color = Color.green;
 			}
 		else {
 			canClick = false;
@@ -73,6 +81,7 @@ public class ReticleRaycast : MonoBehaviour {
 		}
 			if (canClick == true && canCast == true && triggerInputValue == -1) {
 				CastSpell (spellMaker.currentSpell);
+				canCast = false;
 			}
 	}
 }
@@ -121,14 +130,18 @@ public class ReticleRaycast : MonoBehaviour {
 		Debug.Log ("You've cast: " + spell.name);
 			switch (spellMaker.currentSpell.name) {
 			case "Fire":
-				Instantiate (fireball, hit.point, Quaternion.identity);
+				Instantiate (fire, hit.point, Quaternion.identity);
 				break;
 			case "Ice":
+				Instantiate (ice, hit.point, Quaternion.identity);
 				break;
 			case "Wind":
+				Instantiate (wind, hit.point, Quaternion.identity);
 				break;
 			}
-		spellMaker.CombineSpells ();
+			if (spellMaker.selectedSpells.Count != 1) {
+				spellMaker.CombineSpells ();
+			}
 		}
 	}
 }

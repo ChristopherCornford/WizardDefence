@@ -61,6 +61,8 @@ GameObject:
   - component: {fileID: 486956}
   - component: {fileID: 19878016}
   - component: {fileID: 19946702}
+  - component: {fileID: 114126133814057102}
+  - component: {fileID: 65119451380974666}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -101,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174764}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -5, y: 0.3, z: 17.29}
+  m_LocalPosition: {x: -4.5191426, y: 8.396994, z: 0.07273793}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 494698}
@@ -9966,7 +9968,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 0
+  randomSeed: 1003265611
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12359,7 +12361,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
     type: 0
     collisionMode: 0
@@ -12367,7 +12369,7 @@ ParticleSystem:
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    plane0: {fileID: 0}
+    plane0: {fileID: 486956}
     plane1: {fileID: 0}
     plane2: {fileID: 0}
     plane3: {fileID: 0}
@@ -12510,7 +12512,7 @@ ParticleSystem:
     interiorCollisions: 1
   TriggerModule:
     enabled: 0
-    collisionShape0: {fileID: 0}
+    collisionShape0: {fileID: 65119451380974666}
     collisionShape1: {fileID: 0}
     collisionShape2: {fileID: 0}
     collisionShape3: {fileID: 0}
@@ -13543,3 +13545,26 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174764}
   m_IsPrefabParent: 1
+--- !u!65 &65119451380974666
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114126133814057102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd059c321a11b03468ec005d83a10f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

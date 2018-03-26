@@ -27,11 +27,17 @@ public class EnemyController : MonoBehaviour {
 
 	public void OnTriggerEnter (Collider collider) {
 		if (collider.transform.tag == "Death") {
-			enemySpawner.activeEnemies.Remove (gameObject);
-			enemySpawner.Invoke ("Spawn", enemySpawner.spawnTimer);
-			Destroy (gameObject);
-			scoreManager.Score++;
-	
+			Score ();
 		}
+	}
+	public void OnParticleCollision(GameObject other) {
+		Score ();
+	}
+	public void Score () {
+		enemySpawner.activeEnemies.Remove (gameObject);
+		enemySpawner.Invoke ("Spawn", enemySpawner.spawnTimer);
+		Destroy (gameObject);
+		scoreManager.Score++;
+		Debug.Log ("A Spell Killed Me!!");
 	}
 }
