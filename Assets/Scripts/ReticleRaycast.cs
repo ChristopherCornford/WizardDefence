@@ -83,16 +83,17 @@ public class ReticleRaycast : MonoBehaviour {
 				canCast = false;
 			}
 	}
-		RaycastHit lane = new RaycastHit ();
+		/*RaycastHit lane = new RaycastHit ();
 		if (Physics.Raycast (transform.position, transform.forward, out lane, raycastReach)) {
 			laneObj = lane.collider.gameObject;
 			if (laneObj.transform.tag == "Lane") {
 				canClick = true;
 				laneObj.GetComponent<Collider> ().GetComponent<Renderer> ().material.color = Color.cyan;
 			} else {
+				laneObj.GetComponent<Collider> ().GetComponent<Renderer> ().material.color = Color.white;
 				Debug.Log ("Not Looking At A Lane");
 			}
-		}
+		}*/
 }
 	/*public void StartCombinationTimer () {
 		Debug.Log ("Timer Starts Now");
