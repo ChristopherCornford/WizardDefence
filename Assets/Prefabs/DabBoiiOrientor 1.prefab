@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 114964507775861564}
   - component: {fileID: 54679856516571174}
   m_Layer: 0
-  m_Name: DabBoiiOrientor
+  m_Name: DabBoiiOrientor 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -765,7 +765,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1665012459699542}
-  m_LocalRotation: {x: 0.58980995, y: 0.30070803, z: -0.33269778, w: 0.6715736}
+  m_LocalRotation: {x: 0.58981, y: 0.30070806, z: -0.3326978, w: 0.67157364}
   m_LocalPosition: {x: 0.003944977, y: 0.00000049132905, z: 0.00035534898}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
