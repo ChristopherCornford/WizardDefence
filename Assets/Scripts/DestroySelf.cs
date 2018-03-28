@@ -6,7 +6,7 @@ public class DestroySelf : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Invoke ("Destroy", 5f);
+		Invoke ("Destroy", 3f);
 	}
 	
 	// Update is called once per frame

@@ -361,7 +361,7 @@ MonoBehaviour:
   effects: []
   triggerInputValue: 0
   canCast: 0
-  timeToCombine: 2
+  timeToCombine: 1
   combinationTimer: 0
   canCombine: 1
   singleSpellCooldown: 0

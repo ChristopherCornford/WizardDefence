@@ -29,7 +29,7 @@ public class ReticleRaycast : MonoBehaviour {
 	[Range(0.1f, 5.0f)]
 	public float timeToCombine = 5f;
 	public float combinationTimer;
-	public bool canCombine = true;
+	private bool activateTimerToReset;
 	[Range(0f, 1f)]
 	public float singleSpellCooldown;
 	[Range(1f, 5f)]
@@ -43,13 +43,12 @@ public class ReticleRaycast : MonoBehaviour {
 	public GameObject wind;
 
 	void Start () {
-		canCombine = true;
 		combinationTimer = timeToCombine;
 	}
 	void FixedUpdate() 
 	{	
 		canClick = true;
-		spellsSelected = spellMaker.selectedSpells.Count;
+		//spellsSelected = spellMaker.selectedSpells.Count;
 
 		triggerInputValue = Input.GetAxisRaw ("Fire1");
 		if (triggerInputValue > -0.2) {
@@ -58,10 +57,6 @@ public class ReticleRaycast : MonoBehaviour {
 		// Raycast to see if Player is looking at important object
 		RaycastHit hit = new RaycastHit();
 
-		if (spellsSelected == 0 && (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind"))) {
-			SpellSelection ();
-			//StartCombinationTimer ();
-		}
 		if (Physics.Raycast(transform.position, transform.forward, out hit, raycastReach)){
 			currentObj = hit.collider.gameObject;
 			if (hit.collider.gameObject.tag == "Spell" || spellMaker.selectedSpells.Count != 0 || spellMaker.spellCombination != null) {
@@ -83,48 +78,52 @@ public class ReticleRaycast : MonoBehaviour {
 				canCast = false;
 			}
 	}
-		/*RaycastHit lane = new RaycastHit ();
-		if (Physics.Raycast (transform.position, transform.forward, out lane, raycastReach)) {
-			laneObj = lane.collider.gameObject;
-			if (laneObj.transform.tag == "Lane") {
-				canClick = true;
-				laneObj.GetComponent<Collider> ().GetComponent<Renderer> ().material.color = Color.cyan;
-			} else {
-				laneObj.GetComponent<Collider> ().GetComponent<Renderer> ().material.color = Color.white;
-				Debug.Log ("Not Looking At A Lane");
-			}
-		}*/
+		NewSpellCombo ();
+		ResetSpellsCombo (activateTimerToReset);
 }
-	/*public void StartCombinationTimer () {
-		Debug.Log ("Timer Starts Now");
-		canCombine = true;
-		if (spellsSelected == 1 && (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind"))) {
-			SpellSelection ();
-			EndCombinationTimer ();
-		} else {
-			Invoke ("EndCombinationTimer", timeToCombine);
+	private void ResetSpellsCombo(bool resetTimer) {
+		if (resetTimer) {
+			combinationTimer -= Time.deltaTime;
+			if (combinationTimer <= 0) {
+				activateTimerToReset = false;
+				combinationTimer = timeToCombine;
+				spellsSelected = 0;
+				spellMaker.selectedSpells.Clear ();
+			}
 		}
 	}
-	public void EndCombinationTimer () {
-		spellMaker.selectedSpells.Clear ();
-		canCombine = false;
-	}*/
-	private void SpellSelection () {
-		if (Input.GetButtonDown("Fire")) {
-			spellMaker.currentSpell = spellMaker.Fire;
-			if (canCombine == true) {
-				spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+	private void NewSpellCombo () {
+		if (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind")) {
+			activateTimerToReset = true;
+			switch (spellsSelected) {
+			case 1:
+				if (Input.GetButtonDown("Fire")) {
+						spellMaker.selectedSpells.Add (spellMaker.Fire);
+						combinationTimer = 0;
+				} else if (Input.GetButtonDown("Ice")) {
+						spellMaker.selectedSpells.Add (spellMaker.Ice);
+						combinationTimer = 0;
+				} else if (Input.GetButtonDown("Wind")) {
+						spellMaker.selectedSpells.Add (spellMaker.Wind);
+						combinationTimer = 0;
+				}
+				break;
+			case 0:
+				if (Input.GetButtonDown("Fire")) {
+					spellMaker.currentSpell = spellMaker.Fire;
+					spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+
+				} else if (Input.GetButtonDown("Ice")) {
+					spellMaker.currentSpell = spellMaker.Ice;
+					spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+
+				} else if (Input.GetButtonDown("Wind")) {
+					spellMaker.currentSpell = spellMaker.Wind;
+					spellMaker.selectedSpells.Add (spellMaker.currentSpell);
+				}
+				break;
 			}
-		} else if (Input.GetButtonDown("Ice")) {
-			spellMaker.currentSpell = spellMaker.Ice;
-			if (canCombine == true) {
-				spellMaker.selectedSpells.Add (spellMaker.currentSpell);
-			}
-		} else if (Input.GetButtonDown("Wind")) {
-			spellMaker.currentSpell = spellMaker.Wind;
-			if (canCombine == true) {
-				spellMaker.selectedSpells.Add (spellMaker.currentSpell);
-			}
+			spellsSelected++;
 		}
 	}
 	private void Click(string objTag) {
@@ -135,6 +134,7 @@ public class ReticleRaycast : MonoBehaviour {
 		}
 	}
 	private void CastSpell(Spell spell){
+		combinationTimer = 0;
 		RaycastHit hit = new RaycastHit();
 		if (Physics.Raycast(transform.position, transform.forward, out hit, spellRange)){
 		Debug.Log ("You've cast: " + spell.name);
@@ -149,10 +149,6 @@ public class ReticleRaycast : MonoBehaviour {
 				Instantiate (wind, hit.point, Quaternion.identity);
 				break;
 			}
-			/*if (spellMaker.selectedSpells.Count != 1) {
-				spellMaker.selectedSpells.Clear ();
-
-			}*/
 			spellMaker.selectedSpells.Clear ();
 			spellMaker.CombineSpells ();
 		}
