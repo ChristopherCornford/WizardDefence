@@ -229,7 +229,7 @@ MonoBehaviour:
     clampVerticalRotation: 1
     MinimumX: -90
     MaximumX: 90
-    smooth: 1
+    smooth: 0
     smoothTime: 10
     lockCursor: 0
   m_UseFovKick: 1
@@ -367,9 +367,17 @@ MonoBehaviour:
   singleSpellCooldown: 0
   combinedSpellCooldown: 0
   spellsSelected: 0
+  currentSpell: {fileID: 0}
   fire: {fileID: 174764, guid: 94cf4257d40ab34469e91019e7ec7c65, type: 2}
   ice: {fileID: 147230, guid: 1bf38434b94b5be4f843109dd93317e0, type: 2}
   wind: {fileID: 135484, guid: 393e6abaeff62834d9e9645164e4f76f, type: 2}
+  fireWall: {fileID: 1162117938989748, guid: f7bda4a512ac8db4ab78fe9ded8cc4b0, type: 2}
+  hurricane: {fileID: 1722848690662388, guid: f017e35b4160c9e4d91b39026916f98c, type: 2}
+  glacialTsunami: {fileID: 1279002040895860, guid: cae098151a0e38043af9e96188fd8fff,
+    type: 2}
+  magma: {fileID: 1191367351086800, guid: 0b7f4d410fa0c9149bc2268742a1ed71, type: 2}
+  fireTornado: {fileID: 1743435445711100, guid: 4992f3a064390464ea0c53b7dbfe86a2,
+    type: 2}
 --- !u!114 &114283318389866948
 MonoBehaviour:
   m_ObjectHideFlags: 1

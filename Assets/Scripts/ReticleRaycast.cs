@@ -39,17 +39,25 @@ public class ReticleRaycast : MonoBehaviour {
 	public float combinedSpellCooldown;
 
 	public int spellsSelected;
-
+	[Header("Current Spell")]
+	public Spell currentSpell;
 	[Header("Particle Effects")]
 	public GameObject fire;
 	public GameObject ice;
 	public GameObject wind;
+	public GameObject fireWall;
+	public GameObject blizzard;
+	public GameObject hurricane;
+	public GameObject glacialTsunami;
+	public GameObject magma;
+	public GameObject fireTornado;
 
 	void Start () {
 		combinationTimer = timeToCombine;
 	}
 	void FixedUpdate() 
 	{	
+		currentSpell = spellMaker.currentSpell;
 		canClick = true;
 		//spellsSelected = spellMaker.selectedSpells.Count;
 
@@ -145,16 +153,36 @@ public class ReticleRaycast : MonoBehaviour {
 		}
 		RaycastHit hit = new RaycastHit();
 		if (Physics.Raycast(transform.position, transform.forward, out hit, spellRange)){
-		Debug.Log ("You've cast: " + spell.name);
 			switch (spellMaker.currentSpell.name) {
 			case "Fire":
 				Instantiate (fire, hit.point, Quaternion.identity);
+				Debug.Log ("You've cast: " + spell.name);
 				break;
 			case "Ice":
 				Instantiate (ice, hit.point, Quaternion.identity);
+				Debug.Log ("You've cast: " + spell.name);
 				break;
 			case "Wind":
 				Instantiate (wind, hit.point, Quaternion.identity);
+				Debug.Log ("You've cast: " + spell.name);
+				break;
+			case "Fire Wall":
+				Instantiate (fireWall, hit.point, Quaternion.identity);
+				break;
+			case "Hurricane":
+				Instantiate (hurricane, hit.point, Quaternion.identity);
+				break;
+			case "Glacial Tsunami":
+				Instantiate (glacialTsunami, hit.point, Quaternion.identity);
+				break;
+			case "Magma":
+				Instantiate (magma, hit.point, Quaternion.identity);
+				break;
+			case "Fire Tornado":
+				Instantiate (fireTornado, hit.point, Quaternion.identity);
+				break;
+			case "Blizzard":
+				Instantiate (blizzard, hit.point, Quaternion.identity);
 				break;
 			}
 			spellMaker.selectedSpells.Clear ();

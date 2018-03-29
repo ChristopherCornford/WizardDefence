@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 76915987485350372}
   m_Layer: 0
   m_Name: FireWall
-  m_TagString: Untagged
+  m_TagString: SpellEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9319,7 +9319,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 5
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295

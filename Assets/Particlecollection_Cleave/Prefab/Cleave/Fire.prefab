@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 76098094043969004}
   m_Layer: 0
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: SpellEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
