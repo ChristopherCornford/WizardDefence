@@ -361,9 +361,9 @@ MonoBehaviour:
   effects: []
   triggerInputValue: 0
   canCast: 0
-  timeToCombine: 1
+  timeToCombine: 2
   combinationTimer: 0
-  canCombine: 1
+  canCombine: 0
   singleSpellCooldown: 0
   combinedSpellCooldown: 0
   spellsSelected: 0

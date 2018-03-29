@@ -25,11 +25,14 @@ public class ReticleRaycast : MonoBehaviour {
 
 	public float triggerInputValue;
 	public bool canCast = false;
-
+	[Header("Spell Combining")]
 	[Range(0.1f, 5.0f)]
 	public float timeToCombine = 5f;
 	public float combinationTimer;
 	private bool activateTimerToReset;
+	[SerializeField]
+	private bool canCombine = false;
+	[Header("Cool Downs")]
 	[Range(0f, 1f)]
 	public float singleSpellCooldown;
 	[Range(1f, 5f)]
@@ -85,18 +88,18 @@ public class ReticleRaycast : MonoBehaviour {
 		if (resetTimer) {
 			combinationTimer -= Time.deltaTime;
 			if (combinationTimer <= 0) {
+				canCombine = false;
 				activateTimerToReset = false;
 				combinationTimer = timeToCombine;
 				spellsSelected = 0;
-				spellMaker.selectedSpells.Clear ();
 			}
 		}
 	}
 	private void NewSpellCombo () {
 		if (Input.GetButtonDown ("Fire") || Input.GetButtonDown ("Ice") || Input.GetButtonDown ("Wind")) {
 			activateTimerToReset = true;
-			switch (spellsSelected) {
-			case 1:
+			switch (canCombine) {
+			case true:
 				if (Input.GetButtonDown("Fire")) {
 						spellMaker.selectedSpells.Add (spellMaker.Fire);
 						combinationTimer = 0;
@@ -108,7 +111,7 @@ public class ReticleRaycast : MonoBehaviour {
 						combinationTimer = 0;
 				}
 				break;
-			case 0:
+			case false:
 				if (Input.GetButtonDown("Fire")) {
 					spellMaker.currentSpell = spellMaker.Fire;
 					spellMaker.selectedSpells.Add (spellMaker.currentSpell);
@@ -121,6 +124,7 @@ public class ReticleRaycast : MonoBehaviour {
 					spellMaker.currentSpell = spellMaker.Wind;
 					spellMaker.selectedSpells.Add (spellMaker.currentSpell);
 				}
+				canCombine = true;
 				break;
 			}
 			spellsSelected++;
@@ -134,7 +138,11 @@ public class ReticleRaycast : MonoBehaviour {
 		}
 	}
 	private void CastSpell(Spell spell){
-		combinationTimer = 0;
+		if (canCombine == true) {
+			combinationTimer = 0;
+		} else if (canCombine == false) {
+			combinationTimer = timeToCombine;
+		}
 		RaycastHit hit = new RaycastHit();
 		if (Physics.Raycast(transform.position, transform.forward, out hit, spellRange)){
 		Debug.Log ("You've cast: " + spell.name);
