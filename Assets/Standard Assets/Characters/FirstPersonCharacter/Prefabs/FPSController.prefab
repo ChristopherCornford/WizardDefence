@@ -47,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.271994, z: 8.675}
+  m_LocalPosition: {x: 0, y: 9.603, z: 8.362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -88,7 +88,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -217,20 +217,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 5
-  m_RunSpeed: 10
+  m_WalkSpeed: 0
+  m_RunSpeed: 0
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 10
   m_StickToGroundForce: 10
   m_GravityMultiplier: 2
   m_MouseLook:
-    XSensitivity: 1
-    YSensitivity: 1
+    XSensitivity: 0.5
+    YSensitivity: 0.5
     clampVerticalRotation: 1
     MinimumX: -90
     MaximumX: 90
-    smooth: 0
-    smoothTime: 10
+    smooth: 1
+    smoothTime: 50
     lockCursor: 0
   m_UseFovKick: 1
   m_FovKick:
@@ -372,6 +372,7 @@ MonoBehaviour:
   ice: {fileID: 147230, guid: 1bf38434b94b5be4f843109dd93317e0, type: 2}
   wind: {fileID: 135484, guid: 393e6abaeff62834d9e9645164e4f76f, type: 2}
   fireWall: {fileID: 1162117938989748, guid: f7bda4a512ac8db4ab78fe9ded8cc4b0, type: 2}
+  blizzard: {fileID: 0}
   hurricane: {fileID: 1722848690662388, guid: f017e35b4160c9e4d91b39026916f98c, type: 2}
   glacialTsunami: {fileID: 1279002040895860, guid: cae098151a0e38043af9e96188fd8fff,
     type: 2}

@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour {
 	[Range(0, 5f)]
 	public float spawnTimer;
 
-	[Range(1, 10)]
+	[Range(1, 25)]
 	public int enemyLimit;
 	public int numberOfEnemies;
 
