@@ -155,7 +155,7 @@ WorldParticleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1162117938989748}
-  m_BounceFactor: 0.5
+  m_BounceFactor: 0
   m_CollisionEnergyLoss: 0
   m_CollidesWith:
     serializedVersion: 2

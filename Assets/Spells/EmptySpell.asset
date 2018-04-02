@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23051ece2bb8d15449e28787bccf9e93, type: 3}
   m_Name: EmptySpell
   m_EditorClassIdentifier: 
-  name: EmptySpell
+  name: No Active Spell
   description: 
   color: {r: 0, g: 0, b: 0, a: 0}
   damage: 0

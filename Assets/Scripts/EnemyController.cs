@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour {
 
 	public void OnTriggerEnter (Collider collider) {
 		if (collider.transform.tag == "Death") {
-			Score ();
+			DamageDoor ();
 		}
 	}
 	public void OnParticleCollision(GameObject other) {
@@ -37,5 +37,10 @@ public class EnemyController : MonoBehaviour {
 		enemySpawner.activeEnemies.Remove (gameObject);
 		Destroy (gameObject);
 		scoreManager.Score++;
+	}
+	public void DamageDoor() {
+		enemySpawner.activeEnemies.Remove (gameObject);
+		Destroy (gameObject);
+		scoreManager.currentDoorHealth--;
 	}
 }

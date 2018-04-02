@@ -47,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.603, z: 8.362}
+  m_LocalPosition: {x: 0.704, y: 8.828, z: 11.402}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -96,7 +96,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
+  m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -356,12 +356,11 @@ MonoBehaviour:
   raycastReach: 100
   spellRange: 100
   canClick: 0
-  descriptionText: {fileID: 0}
   spellMaker: {fileID: 114746657103255046}
   effects: []
   triggerInputValue: 0
   canCast: 0
-  timeToCombine: 2
+  timeToCombine: 1
   combinationTimer: 0
   canCombine: 0
   singleSpellCooldown: 0
@@ -372,11 +371,11 @@ MonoBehaviour:
   ice: {fileID: 147230, guid: 1bf38434b94b5be4f843109dd93317e0, type: 2}
   wind: {fileID: 135484, guid: 393e6abaeff62834d9e9645164e4f76f, type: 2}
   fireWall: {fileID: 1162117938989748, guid: f7bda4a512ac8db4ab78fe9ded8cc4b0, type: 2}
-  blizzard: {fileID: 0}
+  Lightning: {fileID: 185910, guid: 3ce6cbe4d2be12145ab3c20ad0e77c27, type: 2}
   hurricane: {fileID: 1722848690662388, guid: f017e35b4160c9e4d91b39026916f98c, type: 2}
   glacialTsunami: {fileID: 1279002040895860, guid: cae098151a0e38043af9e96188fd8fff,
     type: 2}
-  magma: {fileID: 1191367351086800, guid: 0b7f4d410fa0c9149bc2268742a1ed71, type: 2}
+  magma: {fileID: 1707654656723642, guid: 46c9418b7e047d7469d0eb1246df37d9, type: 2}
   fireTornado: {fileID: 1743435445711100, guid: 4992f3a064390464ea0c53b7dbfe86a2,
     type: 2}
 --- !u!114 &114283318389866948
@@ -385,12 +384,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 8f64635859146bd48a9a4d7f51a79e46, type: 2}
+  profile: {fileID: 11400000, guid: f158db34052877e44a9c80d59375cbf8, type: 2}
 --- !u!114 &114746657103255046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -410,10 +409,11 @@ MonoBehaviour:
   combinedDamage: 0
   currentSpell: {fileID: 0}
   currentSpellText: {fileID: 0}
+  currentSpellTextSpell: {fileID: 0}
   Fire: {fileID: 11400000, guid: ffc7cd799cc0ab24bb036847a556e567, type: 2}
   Ice: {fileID: 11400000, guid: 041bd63dde4b146409cbbf72e08ffa76, type: 2}
   Wind: {fileID: 11400000, guid: fb8a5c1c189007545b2a44cfa8bbf05d, type: 2}
-  Blizzard: {fileID: 11400000, guid: 11692c0be7feb374bb7e869f8b7dd493, type: 2}
+  Lightning: {fileID: 11400000, guid: 94faaa160c626ab4cab51387979a4166, type: 2}
   FireTornado: {fileID: 11400000, guid: 9f7cf44d4e2e971488e15156e0c88882, type: 2}
   FireWall: {fileID: 11400000, guid: a677e7e3c4960214992e785bd39f885a, type: 2}
   GlacialTsunami: {fileID: 11400000, guid: ad9c90af449fc5d4f9fd81036639eaca, type: 2}

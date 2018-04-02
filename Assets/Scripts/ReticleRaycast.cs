@@ -18,8 +18,6 @@ public class ReticleRaycast : MonoBehaviour {
 	private GameObject currentObj;
 	private GameObject laneObj;
 
-	public Text descriptionText;
-
 	public SpellMaker spellMaker;
 	public GameObject[] effects;
 
@@ -46,7 +44,7 @@ public class ReticleRaycast : MonoBehaviour {
 	public GameObject ice;
 	public GameObject wind;
 	public GameObject fireWall;
-	public GameObject blizzard;
+	public GameObject Lightning;
 	public GameObject hurricane;
 	public GameObject glacialTsunami;
 	public GameObject magma;
@@ -72,13 +70,9 @@ public class ReticleRaycast : MonoBehaviour {
 			currentObj = hit.collider.gameObject;
 			if (hit.collider.gameObject.tag == "Spell" || spellMaker.selectedSpells.Count != 0 || spellMaker.spellCombination != null) {
 				canClick = true;
-				if (hit.collider.gameObject.tag == "Spell") {
-					descriptionText.text = currentObj.GetComponent<SpellAttributes> ().spell.description;
-				}
 			}
 		else {
 			canClick = false;
-				descriptionText.text = " ";
 		}
 		// Actual clicking on object
 		if (canClick == true && Input.GetButtonDown("Fire1")){
@@ -181,8 +175,8 @@ public class ReticleRaycast : MonoBehaviour {
 			case "Fire Tornado":
 				Instantiate (fireTornado, hit.point, Quaternion.identity);
 				break;
-			case "Blizzard":
-				Instantiate (blizzard, hit.point, Quaternion.identity);
+			case "Lightning":
+				Instantiate (Lightning, hit.point, Quaternion.identity);
 				break;
 			}
 			spellMaker.selectedSpells.Clear ();
