@@ -18,10 +18,11 @@ public class ScoreManager : MonoBehaviour {
 	public TMP_Text currentDoorHealthText;
 	public Slider doorHealth;
 
+	public Canvas gameCanvas;
+	public Canvas pauseCanvas;
 
 
 
-	// Use this for initialization
 	void Start () {
 		highScore.text = "High Score: " + PlayerPrefs.GetInt ("HighScore", 0).ToString ();
 		doorHealth.maxValue = doorStrength;
@@ -45,6 +46,20 @@ public class ScoreManager : MonoBehaviour {
 			Time.timeScale = 0;
 		} else {
 			playerLossText.text = "";
+		}
+		if (Input.GetButtonDown("Pause")) {
+			PauseGame();
+		}
+	}
+	public void PauseGame() {
+		if (gameCanvas.isActiveAndEnabled == true) {
+			Time.timeScale = 0;
+			gameCanvas.gameObject.SetActive (false);
+			pauseCanvas.gameObject.SetActive (true);
+		} else if (pauseCanvas.isActiveAndEnabled == true) {
+			gameCanvas.gameObject.SetActive (true);
+			pauseCanvas.gameObject.SetActive (false);
+			Time.timeScale = 1;
 		}
 	}
 }
